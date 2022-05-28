@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Add Payees') }}
+            {{ __('Add Payee') }}
         </h2>
     </x-slot>
 
@@ -9,6 +9,8 @@
 
         <!-- Validation Errors -->
         <x-payee-validation-errors class="mb-4" :errors="$errors" />
+        
+        <!--success message -->
         <x-add-payee-success class="mb-4" :payee="$payee ?? '' " />
 
         <form method="POST" action="{{ route('add-payee') }}">

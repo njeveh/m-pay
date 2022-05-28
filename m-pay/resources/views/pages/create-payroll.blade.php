@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Payees') }}
+            {{ __('Create Payroll') }}
         </h2>
     </x-slot>
 
@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <!--payees list -->
-                    <x-payees-list class="mb-4" :payees="$payees ?? '' " />
+                    <x-add-to-payroll class="mb-4" :payees="$payees ?? '' " />
                 </div>
             </div>
         </div>

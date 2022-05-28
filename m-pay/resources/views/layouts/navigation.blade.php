@@ -22,8 +22,8 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('payroll')" :active="request()->routeIs('payroll')">
-                        {{ __('Payroll') }}
+                    <x-nav-link :href="route('create-payroll')" :active="request()->routeIs('create-payroll')">
+                        {{ __('Create Payroll') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
@@ -31,8 +31,13 @@
                         {{ __('Payees') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('payroll')" :active="request()->routeIs('payroll')">
+                        {{ __('Payroll') }}
+                    </x-nav-link>
+                </div>
             </div>
-
+            <x-payroll-icon />
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">
@@ -85,6 +90,16 @@
         <div class="space-y-1">
             <x-responsive-nav-link :href="route('add-payee')" :active="request()->routeIs('add-payee')">
                 {{ __('Add Payee') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="space-y-1">
+            <x-responsive-nav-link :href="route('create-payroll')" :active="request()->routeIs('create-payroll')">
+                {{ __('Create Payroll') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="space-y-1">
+            <x-responsive-nav-link :href="route('payees')" :active="request()->routeIs('payees')">
+                {{ __('Payees') }}
             </x-responsive-nav-link>
         </div>
         <div class="space-y-1">

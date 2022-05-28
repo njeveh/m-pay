@@ -24,14 +24,24 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'show'])
         ->name('dashboard');
-    Route::get('/add-payee', [AddPayeeController::class, 'show'])
+    Route::get('/add-payee', [PayeesController::class, 'show'])
         ->name('add-payee-form');
-    Route::post('/add-payee', [AddPayeeController::class, 'store'])
+    Route::post('/add-payee', [PayeesController::class, 'store'])
         ->name('add-payee');
-    Route::get('/payroll', [PayrollController::class, 'show'])
-        ->name('payroll');
-    Route::get('/payees', [PayeesController::class, 'show'])
+    Route::get('/update-payee', [PayeesController::class, 'showUpdateForm'])
+        ->name('show-update-form');
+    Route::post('/update-payee', [PayeesController::class, 'update'])
+        ->name('update-payee');
+    Route::post('/delete-payee', [PayeesController::class, 'delete'])
+        ->name('delete-payee');
+    Route::get('/create-payroll', [PayrollController::class, 'show'])
+        ->name('create-payroll');
+    Route::get('/payees', [PayeesController::class, 'listPayees'])
         ->name('payees');
+    Route::get('/payroll', [PayrollController::class, 'showPayroll'])->name('payroll');
+    Route::post('/add-to-payroll', [PayrollController::class, 'addToPayroll'])->name('add.to.payroll');
+    Route::patch('/update-payroll', [PayrollController::class, 'update'])->name('update.payroll');
+    Route::delete('/remove-from-payroll', [PayrollController::class, 'remove'])->name('remove.from.payroll');
 });
 
 require __DIR__ . '/auth.php';
