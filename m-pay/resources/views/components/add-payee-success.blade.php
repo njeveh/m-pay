@@ -1,12 +1,7 @@
 @props(['payee'])
 
 @if ($payee)
-    <script>
-        setTimeout(function() {
-            $("#success").fadeOut().empty();
-        }, 2000);
-    </script>
-    <div id="success" {{ $attributes  }}>
+    <div class="notification" {{ $attributes  }}>
         <div class="font-medium text-green-600">
             {{ __('Payee was added successfully.') }}
         </div>

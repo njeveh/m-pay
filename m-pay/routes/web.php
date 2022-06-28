@@ -42,6 +42,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/add-to-payroll', [PayrollController::class, 'addToPayroll'])->name('add.to.payroll');
     Route::patch('/update-payroll', [PayrollController::class, 'update'])->name('update.payroll');
     Route::delete('/remove-from-payroll', [PayrollController::class, 'remove'])->name('remove.from.payroll');
+    Route::get('/checkout', [PayrollController::class, 'checkout'])->name('checkout.payroll');
 });
 
 require __DIR__ . '/auth.php';

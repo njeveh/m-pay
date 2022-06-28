@@ -1,5 +1,6 @@
 @props(['payees'])
 @if ($payees)
+
 <script>
 $(document).ready(function(){
     // Toggle dropdown update and delete menu on click
@@ -42,8 +43,8 @@ $(".add-to-payroll").click(function (e) {
     });
 });
 });
-
 </script>
+
 <div class=" py-2 md:py-5">
     <x-add-payee-button onclick="window.location='{{ route('add-payee') }}'" class="ml-3 mb-2">
         {{ __('Add New Payee') }}

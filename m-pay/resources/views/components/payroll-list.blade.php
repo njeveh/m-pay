@@ -45,7 +45,7 @@
 
         <div>
                 <a href="{{ url('/create-payroll') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i>Add More Payees</a>
-                <button class="btn btn-success">Checkout</button>
+                <button class="btn btn-success checkout">Checkout</button>
         </div>
     </div>
 
@@ -81,6 +81,25 @@
                 data: {
                     _token: '{{ csrf_token() }}', 
                     id: ele.parents(".payee").attr("data-id")
+                },
+                success: function (response) {
+                    window.location.reload();
+                }
+            });
+        }
+    });
+
+    $(".checkout").click(function (e) {
+        e.preventDefault();
+  
+        var ele = $(this);
+  
+        if(confirm("Are you sure want to submit payroll for processing?")) {
+            $.ajax({
+                url: '{{ route('checkout.payroll') }}',
+                method: "get",
+                data: {
+                    _token: '{{ csrf_token() }}', 
                 },
                 success: function (response) {
                     window.location.reload();

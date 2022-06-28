@@ -20,25 +20,34 @@
         <script src="{{asset('js/jquery.min.js')}}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        
+        <!--remove popup notifications from the dom -->
+        <script>
+        setTimeout(function() {
+            $(".notification").slideUp('slow', 'linear');
+        }, 2000);
+        </script>
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
+            <div class="sticky top-0">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
             <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <div class="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8">
                     {{ $header }}
                 </div>
             </header>
+            </div>
 
             <!-- Page Content -->
             <main>
                 <div class="container">
   
-                    @if(session('success'))
-                        <div class="alert alert-success">
-                        {{ session('success') }}
+                    @if(session('op-feedback'))
+                        <div class="notification notice px-10 py-1 rounded-md flex justify-center w-4/5">
+                        {{ session('op-feedback') }}
                         </div> 
                     @endif
                 </div>

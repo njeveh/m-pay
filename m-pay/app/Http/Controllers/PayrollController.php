@@ -32,7 +32,6 @@ class PayrollController extends Controller
      * Handle an incoming add to payroll request.
      *
      * @param  \App\Http\Requests\Auth\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
      */
     public function addToPayroll(Request $request)
     {
@@ -53,7 +52,7 @@ class PayrollController extends Controller
         }
 
         session()->put('payroll', $payroll);
-        return redirect()->back()->with('success', 'Payee added to payroll successfully!');
+        session()->flash('op-feedback', 'Payee added to payroll successfully!');
     }
 
     /**
@@ -67,7 +66,7 @@ class PayrollController extends Controller
             $payroll = session()->get('payroll');
             $payroll[$request->id]["amount"] = $request->amount;
             session()->put('payroll', $payroll);
-            session()->flash('success', 'Payroll updated successfully');
+            session()->flash('op-feedback', 'Payroll updated successfully');
         }
     }
 
@@ -84,7 +83,26 @@ class PayrollController extends Controller
                 unset($payroll[$request->id]);
                 session()->put('payroll', $payroll);
             }
-            session()->flash('success', 'Payee removed successfully');
+            session()->flash('op-feedback', 'Payee removed successfully');
+        }
+    }
+
+    /**
+     * Handle an incoming checkout request.
+     *
+     * @param  \App\Http\Requests\Auth\Request  $request
+     */
+    public function checkout(Request $request)
+    {
+
+        $payroll = session()->get('payroll', []);
+
+        if (isset($payroll)) {
+            foreach ($payroll as $payee) {
+                session()->flash('op-feedback', 'Payee added to payroll successfully!' . $payee['amount']);
+            }
+        } else {
+            session()->flash('There is nothing in the payroll to process yet!');
         }
     }
 }
